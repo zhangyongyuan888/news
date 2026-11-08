@@ -40,7 +40,7 @@ app:
 # 详细时间线图请查看 config/timeline.yaml
 # ===============================================================
 schedule:
-  enabled: false                        # 是否启用调度系统（true=启用, false=关闭，默认关闭）
+  enabled: true                        # 是否启用调度系统（true=启用, false=关闭，默认关闭）
   preset: "morning_evening"             # 预设模板名称（见上方说明）
 
 
@@ -62,132 +62,75 @@ schedule:
 # 只要 api_url 不是你自己部署的实例，都推荐配置 expected_domain
 # ===============================================================
 # name 可以定义任意名称，只具有显示作用，即使项目运行了几天后，忽然改掉 name 也不会影响代码的正常运行
+
 platforms:
   enabled: true
   api_url: ""
   sources:
-    
-    # === 综合新闻媒体类 ===
+
+    # ==========================================
+    # 一、综合新闻：国内、国际重要事件
+    # ==========================================
     - id: "toutiao"
       name: "今日头条"
+
     - id: "baidu"
       name: "百度热搜"
+
     - id: "thepaper"
       name: "澎湃新闻"
-    - id: "ifeng"
-      name: "凤凰网"
-    - id: "cankaoxiaoxi"
-      name: "参考消息"
-    - id: "sputniknewscn"
-      name: "卫星通讯社"
+
     - id: "zaobao"
       name: "联合早报"
-    - id: "mktnews"
-      name: "MKT新闻"
-    - id: "kaopu"
-      name: "靠谱新闻"
 
-    # === 财经投资类 ===
-    - id: "wallstreetcn-hot"
-      name: "华尔街见闻 最热"
-    - id: "wallstreetcn-quick"
-      name: "华尔街见闻 快讯"
-    - id: "wallstreetcn-news"
-      name: "华尔街见闻 最新"
-    - id: "cls-hot"
-      name: "财联社热门"
-    - id: "gelonghui"
-      name: "格隆汇"
-    - id: "xueqiu"
-      name: "雪球"
-    - id: "jin10"
-      name: "金十数据"
-    - id: "fastbull"
-      name: "快讯通"
-
-    # === 社交/短视频/娱乐类 ===
+    # ==========================================
+    # 二、社会热点：大众关注、短视频趋势
+    # ==========================================
     - id: "weibo"
       name: "微博"
+
     - id: "douyin"
       name: "抖音"
+
     - id: "bilibili-hot-search"
-      name: "bilibili 热搜"
-    - id: "tieba"
-      name: "贴吧"
+      name: "B站热搜"
+
     - id: "zhihu"
       name: "知乎"
-    - id: "hupu"
-      name: "虎扑"
 
-    # === 科技类平台 ===
+    # ==========================================
+    # 三、财经商业：经济、股市、投资
+    # ==========================================
+    - id: "wallstreetcn-hot"
+      name: "华尔街见闻"
+
+    - id: "cls-hot"
+      name: "财联社热门"
+
+    - id: "cls-telegraph"
+      name: "财联社电报"
+
+    - id: "jin10"
+      name: "金十数据"
+
+    - id: "gelonghui"
+      name: "格隆汇"
+
+    # ==========================================
+    # 四、科技与AI：技术、创业、新产品
+    # ==========================================
     - id: "ithome"
       name: "IT之家"
-    - id: "juejin"
-      name: "掘金"
+
     - id: "github"
       name: "GitHub"
-    - id: "hackernews"
-      name: "Hacker News"
-    - id: "solidot"
-      name: "Solidot"
-    - id: "v2ex"
-      name: "V2EX"
-    - id: "nowcoder"
-      name: "牛客网"
-    - id: "pcbeta"
-      name: "远景论坛"
-    - id: "sspai"
-      name: "少数派"
+
+    - id: "juejin"
+      name: "掘金"
+
     - id: "producthunt"
-      name: "ProductHunt"
+      name: "Product Hunt"
 
-    # === 其他/工具类 ===
-    - id: "chongbuluo"
-      name: "虫部落"
-
-    # NewsNow的信息源在11月20日更新：
-    - id: "tencent-hot"
-      name: "腾讯新闻 综合早报"
-      
-    - id: "cls-telegraph"
-      name: "财联社 电报"
-      
-    - id: "cls-depth"
-      name: "财联社 深度"
-      
-    - id: "fastbull-express"
-      name: "法布财经 快讯"
-      
-    - id: "fastbull-news"
-      name: "法布财经 头条"
-
-    # ======================================================
-    # 暂时失败的渠道（可能需要修复或接口已变更）
-    # 备注：以下渠道在测试中抓取失败，已暂时注释
-    # 如需使用请检查API接口状态或联系维护团队
-    # ======================================================
-    
-    # 失败的综合新闻媒体类
-    # - id: "sina"
-    # name: "新浪" # 失败原因：接口可能已变更
-    # - id: "sohu" 
-    # name: "搜狐" # 失败原因：接口可能已变更
-    
-    # 失败的财经类
-    # - id: "ghxi"
-    # name: "国海证券" # 失败原因：接口可能已变更
-    
-    # 失败的社交/短视频类
-    # - id: "kuaishou"
-    # name: "快手" # 失败原因：接口可能已变更
-    # - id: "smzdm"
-    # name: "什么值得买" # 失败原因：接口可能已变更
-    
-    # 失败的科技类
-    # - id: "36kr"
-    # name: "36氪" # 失败原因：接口可能已变更
-    # - id: "linuxdo"
-    # name: "LinuxDo" # 失败原因：接口可能已变更
     
     # ===============================================================
 # 3. 数据源 - RSS 订阅
@@ -205,7 +148,7 @@ rss:
   freshness_filter:
     enabled: true                     # 是否启用新鲜度过滤（true=启用, false=关闭）
 
-    max_age_days: 1                   # 最大文章年龄（天）
+    max_age_days: 2                   # 最大文章年龄（天）
                                       # - 正整数：只推送 N 天内的文章
                                       # - 0：禁用过滤，推送所有文章
 
@@ -214,25 +157,82 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
-  - id: "hacker-news"
-    name: "Hacker News"
-    url: "https://hnrss.org/frontpage"
+    # ===== 原有 RSS：全部保留 =====
 
-  - id: "ruanyifeng"
-    name: "阮一峰的网络日志"
-    url: "http://www.ruanyifeng.com/blog/atom.xml"
-    enabled: true
-    max_age_days: 3
+    - id: "hacker-news"
+      name: "Hacker News"
+      url: "https://hnrss.org/frontpage"
 
-  # 添加 GitHub 趋势项目
-  - id: "github-trending"
-    name: "GitHub Trending"
-    url: "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml"
-    max_age_days: 2
+    - id: "ruanyifeng"
+      name: "阮一峰的网络日志"
+      url: "http://www.ruanyifeng.com/blog/atom.xml"
+      enabled: true
+      max_age_days: 3
 
-  - id: "yahoo-finance"
-    name: "雅虎财经"
-    url: "https://finance.yahoo.com/news/rssindex"
+    - id: "github-trending"
+      name: "GitHub Trending"
+      url: "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml"
+      max_age_days: 2
+
+    - id: "yahoo-finance"
+      name: "雅虎财经"
+      url: "https://finance.yahoo.com/news/rssindex"
+
+    # ===== 新增 RSS：国际新闻与全球市场 =====
+
+    - id: "global-news"
+      name: "国际重要新闻"
+      url: "https://www.bing.com/news/search?q=world+news+geopolitics+international+economy&format=rss&setlang=zh-CN&cc=CN"
+      enabled: true
+      max_age_days: 2
+
+    - id: "global-business"
+      name: "全球商业与公司"
+      url: "https://www.bing.com/news/search?q=global+business+economy+companies+markets&format=rss&setlang=en-US&cc=US"
+      enabled: true
+      max_age_days: 2
+
+    - id: "finance-market"
+      name: "全球金融市场"
+      url: "https://www.bing.com/news/search?q=gold+forex+oil+stock+market+interest+rates&format=rss&setlang=en-US&cc=US"
+      enabled: true
+      max_age_days: 2
+
+    # ===== 新增 RSS：AI 与科技 =====
+
+    - id: "ai-industry"
+      name: "全球 AI 产业"
+      url: "https://www.bing.com/news/search?q=OpenAI+Anthropic+Google+DeepMind+DeepSeek+AI&format=rss&setlang=en-US&cc=US"
+      enabled: true
+      max_age_days: 2
+
+    - id: "ai-agents"
+      name: "AI 智能体与自动化"
+      url: "https://www.bing.com/news/search?q=AI+agents+automation+AI+tools+SaaS&format=rss&setlang=en-US&cc=US"
+      enabled: true
+      max_age_days: 2
+
+    # ===== 新增 RSS：自媒体与跨境电商 =====
+
+    - id: "creator-economy"
+      name: "海外自媒体与创作者经济"
+      url: "https://www.bing.com/news/search?q=creator+economy+YouTube+TikTok+social+media+marketing&format=rss&setlang=en-US&cc=US"
+      enabled: true
+      max_age_days: 2
+
+    - id: "cross-border-ecommerce"
+      name: "跨境电商与平台"
+      url: "https://www.bing.com/news/search?q=cross+border+ecommerce+Shopify+Amazon+TikTok+Shop+global+trade&format=rss&setlang=en-US&cc=US"
+      enabled: true
+      max_age_days: 2
+
+    # ===== 新增 RSS：副业与创业机会 =====
+
+    - id: "startup-opportunities"
+      name: "创业与新产品机会"
+      url: "https://www.bing.com/news/search?q=startup+SaaS+indie+hacker+startup+funding+new+products&format=rss&setlang=en-US&cc=US"
+      enabled: true
+      max_age_days: 2
 
     # 自定义源示例
     # - id: "custom-feed"
@@ -261,7 +261,7 @@ report:
 
   rank_threshold: 5                   # 排名高亮阈值（影响展示强调，不改变抓取范围）
 
-  max_news_per_keyword: 0             # 每个关键词/标签最大显示数量（0=不限制，仅影响展示裁剪）
+  max_news_per_keyword: 3             # 每个关键词/标签最大显示数量（0=不限制，仅影响展示裁剪）
 
 
 # ===============================================================
@@ -543,7 +543,7 @@ ai_translation:
 
   # 翻译范围（display.regions 关闭的区域即使开启也不会翻译）
   scope:
-    hotlist: false                  # 翻译热榜标题（true=翻译, false=不翻译）
+    hotlist: true                  # 翻译热榜标题（true=翻译, false=不翻译）
     rss: true                       # 翻译 RSS 标题（true=翻译, false=不翻译）
     standalone: true                # 翻译独立展示区标题（true=翻译, false=不翻译）
 
